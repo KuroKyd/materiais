@@ -92,6 +92,12 @@ tamanho :: [Int] -> Int
 tamanho [] = 0
 tamanho (x:xs) = 1 + (tamanho xs)
 _______________________________
+Questão 11
+
+reverte :: [Int] -> [Int]
+reverte [] = []
+reverte(x:xs) = reverte xs ++ [x]
+_______________________________
 Questão 12
 
 maior (x:[]) = x
@@ -106,13 +112,64 @@ verifica x (y:ys)
   |x == y = True
   |otherwise = verifica x ys
 _______________________________
+Questão 14
+
+ocorrencia:: Int -> [Int] -> Int
+ocorrencia x [] = 0
+ocorrencia x (y:ys)
+ |x == y = 1 + ocorrencia x ys
+ |otherwise = ocorrencia x ys
+_______________________________
+Questão 15
+
+impar:: [Int] -> Int
+impar [] = 0
+impar (x:xs)
+ |(x `mod` 2) == 1 = 1 + impar xs
+ |otherwise = impar xs
+ 
+conta_impar :: [Int] -> Int
+conta_impar [] = 0
+conta_impar(x:xs) = impar (x:xs)
+________________________________
+Questão 16
+
+ocorrencia:: Int -> [Int] -> Int
+ocorrencia x [] = 0
+ocorrencia x (y:ys)
+ |x == y = 1 + ocorrencia x ys
+ |otherwise = ocorrencia x ys
+ 
+unica_ocorrencia:: Int -> [Int] -> Bool
+unica_ocorrencia x [] = False
+unica_ocorrencia x (y:ys)
+ |ocorrencia x (y:ys) > 1 = False
+ |otherwise = True 
+________________________________ 
 Questão 17
 
 maiores x [] = 0
 maiores x (y:ys)
   |x < y = 1 + (maiores x ys)
   |otherwise = maiores x ys 
-______________________________
+________________________________
+Questão 18
+
+iguais :: [Int] -> [Int] -> Bool
+iguais [] [] = True
+iguais [] _ = False
+iguais _ [] = False
+iguais (x:xs) (y:ys)
+ |(x:xs) == (y:ys) = True
+ |otherwise = False
+________________________________
+Questão 19
+
+concatena:: [Int] -> [Int] -> [Int]
+concatena [] ys = ys
+concatena ys [] = ys
+concatena (x:xs) ys = x : concatena xs ys
+________________________________
 Questão 20
 
 soma :: [Int] -> Int
