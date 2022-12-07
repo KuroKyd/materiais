@@ -1,0 +1,90 @@
+1°
+somaAteh :: Int -> Int
+somaAteh 0 = 0
+somaAteh a = a + somaAteh (a - 1)
+-------------------------------------
+-------------------------------------
+2°
+multiplicaGap :: Int->Int->Int
+multiplicaGap x y
+  |x == y = x
+  |x > y = x * multiplicaGap (x - 1) y
+  |otherwise = x * multiplicaGap (x + 1) y
+-------------------------------------
+-------------------------------------
+3°
+verificaPrimo :: Int->Bool
+verificaPrimo 1 = False
+verificaPrimo 2 = True
+verificaPrimo n
+  | mod n 2 == 0 = False
+  | otherwise = verifica 3 n
+
+verifica :: Int -> Int -> Bool
+verifica i n
+  |i == n = True
+  |mod n i == 0 = False
+  |otherwise = verifica (i+1) n
+-------------------------------------
+-------------------------------------
+4°
+ultimoElem :: [Int] -> Int
+ultimoElem [] = -1
+ultimoElem (x:[]) = x
+ultimoElem (x:xs) = ultimoElem xs
+-------------------------------------
+-------------------------------------
+5°
+maiorAnterior :: [Int]->[Int]
+maiorAnterior [] = []
+maiorAnterior [x] = [x]
+maiorAnterior (x:y:xs)
+  |x < y && xs == [] = [y]
+  |x > y && xs == [] = []
+  |x < y = y : maiorAnterior(y:xs)
+  |otherwise = maiorAnterior(y:xs)
+-------------------------------------
+-------------------------------------
+6°
+verificaPrimo :: Int->Bool
+verificaPrimo 1 = False
+verificaPrimo 2 = True
+verificaPrimo n
+  | mod n 2 == 0 = False
+  | otherwise = verifica 3 n
+
+verifica :: Int -> Int -> Bool
+verifica i n
+  |i == n = True
+  |mod n i == 0 = False
+  |otherwise = verifica (i+1) n
+
+gapPrimosX :: (Int,Int) -> [Int]
+gapPrimosX (x,y)
+  |x == y = [x]
+  |verificaPrimo x == True = x : gapPrimosX (x+1,y)
+  |otherwise = gapPrimosX(x+1,y)
+
+gapPrimosY :: (Int,Int) -> [Int]
+gapPrimosY (x,y)
+  |y == x = [y]
+  |verificaPrimo y == True = y : gapPrimosY (x,y+1)
+  |otherwise = gapPrimosY(x,y+1)
+
+gapPrimos :: (Int,Int) -> [Int]
+gapPrimos (x,y)
+  |x > y = gapPrimosY (x,y)
+  |otherwise = gapPrimosX (x,y)
+-------------------------------------
+-------------------------------------
+7°
+NÃO PRECISA POR QUE É IGUAL A 5, SÓ IGNOREM ELA NA LISTA.
+-------------------------------------
+-------------------------------------
+8°
+desord :: [Int] -> Bool
+desord [] = False
+desord [x] = False
+desord (x:y:xs)
+  |x <= y && desord (y:xs) = False
+  |otherwise = True
